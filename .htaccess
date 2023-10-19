@@ -1,0 +1,11 @@
+    RewriteEngine On
+    RewriteBase /SortingAPI/
+
+    Options -Indexes
+
+    RewriteCond %{REQUEST_URI} !^/SortingAPI/public/
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^(.*)$ /SortingAPI/public/$1 [L]
