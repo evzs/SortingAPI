@@ -2,6 +2,8 @@
 
 namespace SortingAPI;
 
+use SortingAPI\utils\ArrayLib;
+
 abstract class Service {
 
     protected $algorithm_name;
@@ -25,7 +27,7 @@ abstract class Service {
 
         $sorted_data = static::sort($data);
 
-        Response::sendJson(['original' => $data, 'sorted' => $sorted_data]);
+        Response::sendJson([/*'original' => $data,*/ 'sorted' => $sorted_data]);
     }
 
     abstract public static function sort(array $data): array;

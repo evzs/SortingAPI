@@ -2,7 +2,6 @@
 
 $path_segments = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
 $directory_name = end($path_segments);
-
 $class_name = 'SortingAPI\\services\\' . ucfirst($directory_name) . 'Service';
 
 if (class_exists($class_name)) {
