@@ -2,32 +2,38 @@
 
 namespace SortingAPI;
 
-use SortingAPI\utils\ArrayLib;
-
-abstract class Service {
-
+abstract class Service
+{
     protected $algorithm_name;
 
-    public function __construct($algorithm_name) {
-        $this->algorithm_name = $algorithm_name;
-        $this->trigger();
+    public function __construct()
+    {
+        $this->algorithm_name = static::class;
+        $this->triggerExecution();
     }
 
-    public function trigger() {
-        $router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+    // TODO: redistribuer la repartition des responsabilites de la methode trigger dans les autres classes pour rendre trig + condense et renforcer SoC + SRP
+    // TODO: ajouter une vraie gestion d'erreurs (+ avec codes HTTP)
+    public function triggerExecution()
+    {
+        // cree une instance de Router pour gerer la demande entrante
+        $router = new Router(
+            $_SERVER["REQUEST_URI"],
+            $_SERVER["REQUEST_METHOD"]
+        );
         $router->mapAction();
 
-        try {
-            $request = new Request($_SERVER['REQUEST_METHOD'], $_GET['data'] ?? null);
-            $data = $request->getRequestData();
-        } catch (\InvalidArgumentException $e) {
-            Response::sendJson(['error' => $e->getMessage()]);
-            return;
-        }
+        // cree une instance de Request pour traiter les donnees de la demande
+        $request = new Request(
+            $_SERVER["REQUEST_METHOD"],
+            $_GET["data"] ?? null
+        );
+        $data = $request->getRequestData();
 
+        // trie les donnees en utilisant la methode de tri specifique de la sous-classe
         $sorted_data = static::sort($data);
 
-        Response::sendJson([/*'original' => $data,*/ 'sorted' => $sorted_data]);
+        Response::sendJson([/*'original' => $data,*/ "sorted" => $sorted_data]);
     }
 
     abstract public static function sort(array $data): array;

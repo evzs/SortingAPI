@@ -5,11 +5,6 @@ use SortingAPI\Service;
 
 class BubbleSortService extends Service
 {
-    public function __construct()
-    {
-        parent::__construct('bubbleSort');
-    }
-
     public static function sort(array $data): array
     {
         $array_length = count($data);
