@@ -1,11 +1,14 @@
-    RewriteEngine On
-    RewriteBase /SortingAPI/
+RewriteEngine On
 
-    Options -Indexes
+RewriteBase /SortingAPI/
 
-    RewriteCond %{REQUEST_URI} !^/SortingAPI/public/
+Options -Indexes
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/SortingAPI/public/
 
-    RewriteRule ^(.*)$ /SortingAPI/public/$1 [L]
+RewriteRule ^public/(.*)$ /SortingAPI/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ /SortingAPI/public/$1 [L]

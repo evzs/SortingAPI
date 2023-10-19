@@ -5,6 +5,7 @@ Cette API a ete realisee dans le cadre d'un exercice donne lors du module PHP.
 Elle consiste a trier des tableaux avec differents algorithmes.
 
 ## Convention de nommage
+(A titre indicatif, je peux aussi fournir l'information a titre justificatif si necessaire)
 - Classes: PascalCase
 - Methodes et fonctions: camelCase
 - Variables: snake_case
@@ -44,7 +45,7 @@ Laisse a ses sous classes l'implementation reelle de `sort`.
 S'implemente dans les index.php des dossiers endpoint en reprenant le nom du dossier dans lequel il se situe pour instancier la classe Service necessaire.
 
 ## Utilisation
-Pour utiliser l'API, il faut envoyer une requete GET avec les donnees JSON (dans ce cas, le tableau a trier) vers l'endpoint voulu (pour l'instant, soit `bubbleSort` ou `quickSort`. La reponse rendra le tableau trie au format JSON.
+Pour utiliser l'API, il faut envoyer une requete GET avec les donnees JSON (dans ce cas, le tableau a trier) vers l'endpoint voulu (pour l'instant, soit `bubbleSort` ou `quickSort`). La reponse rendra le tableau trie au format JSON.
 
 #### Exemples pour facilite d'acces et tester directement:</summary>
 - <details><summary>Avec 10 valeurs</summary> http://.../SortingAPI/bubbleSort/?data=[23, 89, 2, 5, 76, 1, 9, 12, 6, 45]</details>
